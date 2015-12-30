@@ -39,7 +39,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="ZzukBot">
-      <HintPath>..\..\Internal\ZzukBot.exe</HintPath>
+      <HintPath>E:\WOW\Zzukbot_leather\Internal\ZzukBot.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
