@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Schouten_Druid.cs" />
-    <Compile Include="Schouten_FrostMage.cs" />
+    <Compile Include="Schouten_FrostMage.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Schouten_Priest.cs" />
     <Compile Include="Schouten_Rogue.cs" />
     <Compile Include="Schouten_Shaman.cs" />
