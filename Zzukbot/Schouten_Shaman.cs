@@ -107,7 +107,7 @@ namespace something
             //wolf time to travel between mobs
             if (!this.Player.IsResting() && this.Attackers.Count == 0 && this.Player.GetSpellRank("Ghost Wolf") != 0)
             {
-                if (hasBuff(this.Player, "Ghost Wolf"))
+                if (!hasBuff(this.Player, "Ghost Wolf"))
                 {
                     this.Player.Cast("Ghost Wolf");
                     return false;
@@ -201,66 +201,14 @@ namespace something
                 }
             }
 
-            //drop the fire totems
-/**
-            if (this.Attackers.Count >= 2 && this.Player.GetSpellRank("Magma Totem") != 0)
+            //drop the searing totem
+            if (this.Player.GetSpellRank("Searing Totem") != 0 && this.Player.ManaPercent >= 40 && this.Target.HealthPercent >= 70)
             {
-                if (this.Player.ManaPercent >= 20)
+                float rangeToTotem = this.Player.IsTotemSpawned("Searing Totem");
+                if ((rangeToTotem == -1 || rangeToTotem > 25) && this.Player.CanUse("Searing Totem"))
                 {
-                    float rangeToSearingTotem = this.Player.IsTotemSpawned("Searing Totem");
-                    float rangeToMagmaTotem = this.Player.IsTotemSpawned("Magma Totem");
-                    if (rangeToSearingTotem == -1 && rangeToMagmaTotem == -1)
-                    {
-                        if (this.Player.CanUse("Magma Totem"))
-                        {
-                            this.Player.Cast("Magma Totem");
-                            return;
-                        }
-                    }
-                }
-            }
-**/
-            else if (this.Player.GetSpellRank("Searing Totem") != 0 && this.Player.ManaPercent >= 20)
-            {
-                float rangeToSearingTotem = this.Player.IsTotemSpawned("Searing Totem");
-                if (rangeToSearingTotem == -1)
-                {
-                    if (this.Player.CanUse("Searing Totem"))
-                    {
-                        this.Player.Cast("Searing Totem");
-                        return;
-                    }
-                }
-            }
-            
-            //drop the earth Totems
-            if (this.Attackers.Count >= 2 && this.Player.GetSpellRank("Stoneclaw Totem") != 0)
-            {
-                if (this.Player.ManaPercent >= 20)
-                {
-                    float rangeToStoneclawTotem = this.Player.IsTotemSpawned("Stoneclaw Totem");
-                    float rangeToStrengthTotem = this.Player.IsTotemSpawned("Strength of Earth Totem");
-                    if (rangeToStrengthTotem == -1 && rangeToStoneclawTotem == -1)
-                    {
-                        if (this.Player.CanUse("Stoneclaw Totem"))
-                        {
-                            this.Player.Cast("Stoneclaw Totem");
-                            return;
-                        }
-                    }
-                }
-            }
-            else if (this.Player.GetSpellRank("Strength of Earth Totem") != 0)
-            {
-                float rangeToStoneclawTotem = this.Player.IsTotemSpawned("Stoneclaw Totem");
-                float rangeToStrengthTotem = this.Player.IsTotemSpawned("Strength of Earth Totem");
-                if (rangeToStoneclawTotem == -1 && rangeToStrengthTotem == -1)
-                {
-                    if (this.Player.CanUse("Strength of Earth Totem"))
-                    {
-                        this.Player.Cast("Strength of Earth Totem");
-                        return;
-                    }
+                    this.Player.Cast("Searing Totem");
+                    return;
                 }
             }
 
@@ -284,7 +232,7 @@ namespace something
                 }
             }
             //shocks
-            if (this.Target.HealthPercent >= 40 && this.Player.ManaPercent >= 60 && this.Player.GetSpellRank("Flame Shock") != 0)
+            if (this.Target.HealthPercent >= 40 && this.Player.ManaPercent >= 30 && this.Player.GetSpellRank("Flame Shock") != 0)
             {
                 if (this.Player.CanUse("Flame Shock") && !this.Target.GotDebuff("Flame Shock"))
                 {
@@ -292,7 +240,7 @@ namespace something
                     return;
                 }
             }
-            else if (this.Player.GetSpellRank("Earth Shock") != 0 && this.Player.ManaPercent >= 60)
+            else if (this.Player.GetSpellRank("Earth Shock") != 0 && this.Player.ManaPercent >= 30)
             {
                 if (this.Player.CanUse("Earth Shock"))
                 {
