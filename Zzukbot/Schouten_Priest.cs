@@ -114,17 +114,6 @@ namespace something
                 }
 
             }
-            //everybody needs a SWP all the time
-            if (this.Player.GetSpellRank("Shadow Word: Pain") != 0)
-            {
-                if (!this.Target.GotDebuff("Shadow Word: Pain") && this.Target.HealthPercent > 20)
-                {
-                    this.Player.StopWand();
-                    this.Player.Cast("Shadow Word: Pain");
-                    return;
-                }
-            }
-
 
             if (this.Player.GetSpellRank("Power Word: Shield") != 0)
             {

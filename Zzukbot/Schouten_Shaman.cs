@@ -143,7 +143,6 @@ namespace something
             }
             if (this.Player.ManaPercent <= 65)
             {
-                this.Player.
                 this.Player.Drink();
             }
         }
@@ -195,7 +194,7 @@ namespace something
             if (this.Player.GetSpellRank("Mana Tide Totem") != 0)
             {
                 float rangeToTotem = this.Player.IsTotemSpawned("Mana Tide Totem");
-                if ((rangeToTotem == -1 || rangeToTotem > 25) && this.Player.CanUse("Mana Tide Totem"))
+                if (rangeToTotem == -1 && this.Player.CanUse("Mana Tide Totem"))
                 {
                     this.Player.Cast("Mana Tide Totem");
                     return;
@@ -203,15 +202,16 @@ namespace something
             }
 
             //drop the fire totems
+/**
             if (this.Attackers.Count >= 2 && this.Player.GetSpellRank("Magma Totem") != 0)
             {
                 if (this.Player.ManaPercent >= 20)
                 {
                     float rangeToSearingTotem = this.Player.IsTotemSpawned("Searing Totem");
                     float rangeToMagmaTotem = this.Player.IsTotemSpawned("Magma Totem");
-                    if (rangeToSearingTotem == -1 || rangeToSearingTotem > 25)
+                    if (rangeToSearingTotem == -1 && rangeToMagmaTotem == -1)
                     {
-                        if ((rangeToMagmaTotem == -1 || rangeToMagmaTotem > 25) && this.Player.CanUse("Magma Totem"))
+                        if (this.Player.CanUse("Magma Totem"))
                         {
                             this.Player.Cast("Magma Totem");
                             return;
@@ -219,13 +219,13 @@ namespace something
                     }
                 }
             }
+**/
             else if (this.Player.GetSpellRank("Searing Totem") != 0 && this.Player.ManaPercent >= 20)
             {
-                float rangeToSearingTotem = this.Player.IsTotemSpawned("Magma Totem");
-                float rangeToMagmaTotem = this.Player.IsTotemSpawned("Searing Totem");
-                if (rangeToMagmaTotem == -1 || rangeToMagmaTotem > 25)
+                float rangeToSearingTotem = this.Player.IsTotemSpawned("Searing Totem");
+                if (rangeToSearingTotem == -1)
                 {
-                    if ((rangeToSearingTotem == -1 || rangeToSearingTotem > 25) && this.Player.CanUse("Searing Totem"))
+                    if (this.Player.CanUse("Searing Totem"))
                     {
                         this.Player.Cast("Searing Totem");
                         return;
@@ -240,9 +240,9 @@ namespace something
                 {
                     float rangeToStoneclawTotem = this.Player.IsTotemSpawned("Stoneclaw Totem");
                     float rangeToStrengthTotem = this.Player.IsTotemSpawned("Strength of Earth Totem");
-                    if (rangeToStrengthTotem == -1 || rangeToStrengthTotem > 25)
+                    if (rangeToStrengthTotem == -1 && rangeToStoneclawTotem == -1)
                     {
-                        if ((rangeToStoneclawTotem == -1 || rangeToStoneclawTotem > 25) && this.Player.CanUse("Stoneclaw Totem"))
+                        if (this.Player.CanUse("Stoneclaw Totem"))
                         {
                             this.Player.Cast("Stoneclaw Totem");
                             return;
@@ -254,9 +254,9 @@ namespace something
             {
                 float rangeToStoneclawTotem = this.Player.IsTotemSpawned("Stoneclaw Totem");
                 float rangeToStrengthTotem = this.Player.IsTotemSpawned("Strength of Earth Totem");
-                if (rangeToStoneclawTotem == -1 || rangeToStoneclawTotem > 25)
+                if (rangeToStoneclawTotem == -1 && rangeToStrengthTotem == -1)
                 {
-                    if ((rangeToStrengthTotem == -1 || rangeToStrengthTotem > 25) && this.Player.CanUse("Strength of Earth Totem"))
+                    if (this.Player.CanUse("Strength of Earth Totem"))
                     {
                         this.Player.Cast("Strength of Earth Totem");
                         return;
