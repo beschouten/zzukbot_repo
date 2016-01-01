@@ -8,7 +8,6 @@ namespace something
 {
     public class Schouten_Warrior : CustomClass
     {
-
         public override byte DesignedForClass
         {
             get
@@ -16,7 +15,6 @@ namespace something
                 return PlayerClass.Warrior;
             }
         }
-
         public override string CustomClassName
         {
             get
@@ -27,161 +25,180 @@ namespace something
 
         public override void PreFight()
         {
-            this.SetCombatDistance(3);
-            this.Player.Attack();
-            if (this.Player.GetSpellRank("Charge") != 0)
+            if (this.Player.GetSpellRank("Charge") != 0 && this.Target.DistanceToPlayer > 10)
             {
                 if (this.Player.CanUse("Charge") && this.Player.GotBuff("Battle Stance"))
                 {
                     this.Player.Cast("Charge");
+                    return;
                 }
             }
-            if (this.Player.GetSpellRank("Intercept") != 0)
+            else if (this.Player.GetSpellRank("Intercept") != 0)
             {
                 if (this.Player.CanUse("Intercept") && this.Player.GotBuff("Berserker Stance"))
                 {
                     if (this.Player.Rage >= 10)
                     {
                         this.Player.Cast("Intercept");
+                        return;
                     }
                 }
             }
+            else
+            {
+                this.SetCombatDistance(3);
+                this.Player.Attack();
+            }
+            
         }
 
         public override void Fight()
         {
             this.Player.Attack();
-
-            if (this.Player.GetSpellRank("Battle Shout") != 0)
+            
+            //top of the list, always execute
+            if (this.Player.GetSpellRank("Execute") != 0)
             {
-                if (this.Player.Rage >= 10 && !this.Player.GotBuff("Battle Shout"))
-                {
-                    this.Player.Cast("Battle Shout");
-                }
-            }
-
-            if (this.Player.Rage <= 40)
-            {
-                if (this.Player.GetSpellRank("Blood Rage") != 0 && this.Player.CanUse("Blood Rage"))
-                {
-                    this.Player.Cast("Blood Rage");
-                }
-                if (this.Player.GetSpellRank("Berserker Rage") != 0 && this.Player.CanUse("Berserker Rage") && this.Player.GotBuff("Berserker Stance"))
-                {
-                    this.Player.Cast("Berserker Rage");
-                }
-            }
-
-            if (this.Player.GetSpellRank("Execute") != 0 && !this.Player.GotBuff("Defensive Stance"))
-            {
-                if (this.Target.HealthPercent <= 20 && Player.Rage >= 15)
+                if (this.Player.CanUse("Execute"))
                 {
                     this.Player.Cast("Execute");
                     return;
                 }
             }
 
+            // i like overpower
+            if(this.Player.GetSpellRank("Overpower") != 0)
+            {
+                if(this.Player.CanUse("Overpower"))
+                {
+                    this.Player.Cast("Overpower");
+                    return;
+                }
+            }
+
+            //handle multi-mob
+            if(this.Attackers.Count >= 2)
+            {
+                //keep the clap up
+                if(this.Player.GetSpellRank("Thunder Clap") != 0 && !this.Target.GotDebuff("Weakened Blows"))
+                {
+                    if(this.Player.CanUse("Thunder Clap"))
+                    {
+                        this.Player.Cast("Thunder Clap");
+                        return;
+                    }
+                }
+                //Get the damage down with Demoralizing Shout
+                if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && this.Target.GotDebuff("Demoralizing Shout"));
+                {
+                    if (this.Player.CanUse("Demoralizing Shout"))
+                    {
+                        this.Player.Cast("Demoralizing Shout");
+                        return;
+                    }
+                }
+                //how about a little retaliation?
+                if (this.Player.GetSpellRank("Retaliation") != 0)
+                {
+                    if (this.Player.CanUse("Retaliation"))
+                    {
+                        this.Player.Cast("Retaliation");
+                        return;
+                    }
+                }
+                //cleave them down if there is lots of rage
+                if (this.Player.GetSpellRank("Cleave") != 0 && this.Player.Rage > 60)
+                {
+                    if (this.Player.CanUse("Cleave"))
+                    {
+                        this.Player.Cast("Cleave");
+                        return;
+                    }
+                }
+            }
+
+            //interrupt casting
+            if(this.Player.GetSpellRank("Pummel") != 0 && this.Target.IsCasting != "" || this.Target.IsChanneling != "")
+            {
+                if (this.Player.CanUse("Pummel"))
+                {
+                    this.Player.Cast("Pummel");
+                }
+            }
+
+            //keep rend up if target over 50%
+            if (this.Player.GetSpellRank("Rend") != 0 && !this.Target.GotDebuff("Rend") && this.Target.HealthPercent > 50)
+            {
+                if (this.Player.CanUse("Rend"))
+                {
+                    this.Player.Cast("Rend");
+                    return;
+                }
+            }
+
+            //keep battle shout up
+            if (this.Player.GetSpellRank("Battle Shout") != 0 && !this.Player.GotBuff("Battle Shout"))
+            {
+                if (this.Player.CanUse("Battle Shout"))
+                {
+                    this.Player.Cast("Battle Shout");
+                    return;
+                }
+            }
+
+            //not sure if this works, cant find the spells for vanilla warrior
+            if (this.Player.Rage <= 40)
+            {
+                if (this.Player.GetSpellRank("Blood Rage") != 0)
+                {
+                    if (this.Player.CanUse("Blood Rage"))
+                    {
+                        this.Player.Cast("Blood Rage");
+                        return;
+                    }
+                }
+                if (this.Player.GetSpellRank("Berserker Rage") != 0 && this.Player.GotBuff("Berserker Stance"))
+                {
+                    if (this.Player.CanUse("Berserker Rage"))
+                    {
+                        this.Player.Cast("Berserker Rage");
+                    }
+                }
+            }
+
+            //bloodthirst for grind-a-lot
             if (this.Player.GetSpellRank("Bloodthirst") != 0)
             {
-                if (this.Player.CanUse("Bloodthirst") && this.Player.Rage >= 20)
+                if (this.Player.CanUse("Bloodthirst"))
                 {
                     this.Player.Cast("Bloodthirst");
                     return;
                 }
             }
-            else if (this.Player.GetSpellRank("Mortal Strike") != 0)
+
+            //mortal strike is the jam
+            if (this.Player.GetSpellRank("Mortal Strike") != 0)
             {
-                if (this.Player.CanUse("Mortal Strike") && this.Player.Rage >= 20)
+                if (this.Player.CanUse("Mortal Strike"))
                 {
                     this.Player.Cast("Mortal Strike");
                     return;
                 }
             }
-            else //Super low level 
+
+            //heroic strike is low level horse shit spell
+            if (this.Player.GetSpellRank("Heroic Strike") != 0)
             {
-
-                if (!this.Player.GotBuff("Battle Stance"))
-                {
-                    this.Player.Cast("Battle Stance");
-                    //return;
-                }
-
-                if (this.Player.GetSpellRank("Rend") != 0 && this.Player.GotBuff("Battle Stance"))
-                {
-                    if (!this.Target.GotDebuff("Rend") && this.Player.Rage >= 10 & this.Target.HealthPercent > 25)
-                    {
-                        this.Player.Cast("Rend");
-                        return;
-                    }
-                }
-                if (this.Player.Rage >= 15)
+                if (this.Player.CanUse("Heroic Strike"))
                 {
                     this.Player.Cast("Heroic Strike");
+                    return;
                 }
             }
-
-            if (this.Player.GetSpellRank("Whirlwind") != 0 && !this.Player.CanOverpower)
-            {
-                if (this.Target.DistanceToPlayer <= 7 && this.Player.CanUse("Whirlwind") && this.Player.Rage >= 25)
-                {
-                    if (!this.Player.GotBuff("Berserker Stance"))
-                    {
-                        this.Player.Cast("Berserker Stance");
-                        //return;
-                    }
-                    else
-                    {
-                        this.Player.Cast("Whirlwind");
-                        return;
-                    }
-                }
-            }
-
-            if (this.Player.GetSpellRank("Overpower") != 0)
-            {
-                if (this.Player.CanOverpower)
-                {
-                    if (this.Player.Rage >= 5)
-                    {
-                        if (this.Player.GotBuff("Battle Stance"))
-                        {
-                            Player.Cast("Overpower");
-                            return;
-                        }
-                        else
-                        {
-                            this.Player.Cast("Battle Stance");
-                            Player.Cast("Overpower");
-                        }
-                    }
-
-                }
-            }
-
-            if (this.Player.Rage >= 30)
-            {
-                if (this.Attackers.Count >= 2 && this.Player.GetSpellRank("Cleave") != 0)
-                {
-                    this.Player.Cast("Cleave");
-                }
-                else
-                {
-                    this.Player.Cast("Heroic Strike");
-                }
-            }
-
         }
 
         public override bool Buff()
         {
-            /*
-                            if (!this.Player.GotBuff("Battle Stance"))
-                            {
-                                this.Player.Cast("Battle Stance");
-                                return false;
-                            }
-            */
-            //True means we are done buffing, or cannot buff
             return true;
         }
     }
