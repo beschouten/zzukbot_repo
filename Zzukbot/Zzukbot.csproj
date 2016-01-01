@@ -38,8 +38,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="ZzukBot">
-      <HintPath>E:\WOW\Zzukbot_leather\Internal\ZzukBot.exe</HintPath>
+    <Reference Include="ZzukBot, Version=1.5.0.34, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\ZzukBot.exe</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +53,9 @@
     <Compile Include="Schouten_Shaman.cs" />
     <Compile Include="Schouten_Warrior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ZzukBot.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

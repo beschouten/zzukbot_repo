@@ -5,11 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zzukbot", "Zzukbot\Zzukbot.csproj", "{F83C282F-AF21-4AB0-9C90-9EAF90BEFBF1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ref", "Ref", "{377951C0-8DE6-44E5-BCF9-4DE287A4A0B2}"
-	ProjectSection(SolutionItems) = preProject
-		\\192.168.1.104\Shared\Software\WOW\ZZukbot_files\Internal\ZzukBot.exe = \\192.168.1.104\Shared\Software\WOW\ZZukbot_files\Internal\ZzukBot.exe
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

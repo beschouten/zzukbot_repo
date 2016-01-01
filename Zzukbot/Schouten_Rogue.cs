@@ -198,18 +198,16 @@ namespace something
                     //If we don't have slice and dice up
                     //or if slice and dice has less than 2.0 secs left
                     //BUT! If next eviscerate will kill the target wait for energy instead
-                    if ((!this.Player.GotBuff("Slice and Dice") ||
-                        this.GetSliceAndDiceDuration() <= 2.0) &&
-                        !this.ShouldWeEviscerate() && ComboPoint > 0)
+                    if ((!this.Player.GotBuff("Slice and Dice") || this.GetSliceAndDiceDuration() <= 0.5) && !this.ShouldWeEviscerate() && ComboPoint > 0)
                     {
                         this.Player.Cast("Slice and Dice");
                         return;
                     }
                 }
-                //might as well rupture at top health
+                //might as well rupture at top health with low combo
                 if (this.Player.GetSpellRank("Rupture") != 0 && this.Target.HealthPercent > 60)
                 {
-                    if (ComboPoint >= 1 && ComboPoint <= 3 && !this.Target.GotDebuff("Rupture"))
+                    if (ComboPoint >= 1 && ComboPoint <= 2 && !this.Target.GotDebuff("Rupture"))
                     {
                         this.Player.Cast("Rupture");
                         return;
