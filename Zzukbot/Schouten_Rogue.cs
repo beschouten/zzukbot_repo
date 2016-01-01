@@ -4,14 +4,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ZzukBot.Engines.CustomClass;
 
-//Emu's Rogue Leveling CC
-/*
- * This CC is designed to work from 1-60 for SS rogues. The
- * Class will keep Slice and Dice up at all times, unless
- * the next eviscerate will kill the target.
- * 
- */
-
 namespace something
 {
     public class Schouten_Rogue : CustomClass
@@ -69,7 +61,6 @@ namespace something
                 string tex = @"Interface\\Icons\\Ability_Rogue_SliceDice";
                 this.Player.DoString("points = getBuffDuration('" + tex + "')");
                 return Convert.ToDouble(this.Player.GetText("points"));
-
             }
             catch
             {
@@ -84,7 +75,6 @@ namespace something
                 return PlayerClass.Rogue;
             }
         }
-
         public override string CustomClassName
         {
             get
@@ -96,12 +86,32 @@ namespace something
         public override void PreFight()
         {
             this.SetCombatDistance(3);
-            this.Player.Attack();
             if (this.Target.DistanceToPlayer >= 20 && this.Player.GetSpellRank("Sprint") != 0 && this.Player.CanUse("Sprint"))
             {
                 this.Player.Cast("Sprint");
+                return;
             }
-            /*Could implement stealth logic here*/
+            if(this.Player.GetSpellRank("Cheap Shot") != 0)
+            {
+                if (!this.Player.GotBuff("Stealth") && this.Player.CanUse("Stealth") && this.Target.DistanceToPlayer < 30)
+                {
+                    this.Player.Cast("Stealth");
+                    return;
+                }
+            }
+            if (this.Player.GotBuff("Stealth") && this.Player.GetSpellRank("Cheap Shot") != 0)
+            {
+                if(this.Target.DistanceToPlayer < 8)
+                {
+                    this.Player.Cast("Cheap Shot");
+                    return;          
+                }
+            }
+            else if(this.Target.DistanceToPlayer < 8)
+            {
+                this.Player.Attack();
+                return;
+            }
         }
 
         public override void Fight()
@@ -114,14 +124,12 @@ namespace something
             /*If we are under attack from multiple mobs*/
             if (this.Attackers.Count >= 2)
             {
-                //Have we learnt this spell?
                 if (this.Player.GetSpellRank("Adrenaline Rush") != 0)
                 {
-                    //Is the spell on cooldown?
                     if (this.Player.CanUse("Adrenaline Rush"))
                     {
-                        //Cast the spell!
                         this.Player.Cast("Adrenaline Rush");
+                        return;
                     }
                 }
 
@@ -130,6 +138,7 @@ namespace something
                     if (this.Player.CanUse("Blood Fury"))
                     {
                         this.Player.Cast("Blood Fury");
+                        return;
                     }
                 }
 
@@ -138,6 +147,7 @@ namespace something
                     if (this.Player.CanUse("Blade Flurry"))
                     {
                         this.Player.Cast("Blade Flurry");
+                        return;
                     }
                 }
 
@@ -146,6 +156,7 @@ namespace something
                     if (this.Player.CanUse("Evasion"))
                     {
                         this.Player.Cast("Evasion");
+                        return;
                     }
                 }
             }
@@ -166,13 +177,11 @@ namespace something
                     this.Player.Cast("Kick");
                 }
             }
-
+            //get em!
             if (Energy >= 35)
             {
-                //Have we learnt this spell?
                 if (this.Player.GetSpellRank("Eviscerate") != 0)
                 {
-                    //Check if we have 5 combo points or Eviscerate should kill the target
                     if (this.ShouldWeEviscerate() || ComboPoint == 5)
                     {
                         this.Player.Cast("Eviscerate");
@@ -183,6 +192,7 @@ namespace something
 
             if (Energy >= 25)
             {
+                //keep the slice and dice up
                 if (this.Player.GetSpellRank("Slice and Dice") != 0)
                 {
                     //If we don't have slice and dice up
@@ -196,8 +206,26 @@ namespace something
                         return;
                     }
                 }
+                //might as well rupture at top health
+                if (this.Player.GetSpellRank("Rupture") != 0 && this.Target.HealthPercent > 60)
+                {
+                    if (ComboPoint >= 1 && ComboPoint <= 3 && !this.Target.GotDebuff("Rupture"))
+                    {
+                        this.Player.Cast("Rupture");
+                        return;
+                    }
+                }
+                //fuckin Riposte these assholes if you can
+                if (this.Player.GetSpellRank("Riposte") != 0)
+                {
+                    if (this.Player.CanUse("Riposte"))
+                    {
+                        this.Player.Cast("Riposte");
+                        return;
+                    }
+                }
                 //If nothing else, cast SS
-                if (Energy >= 40)
+                if (Energy >= 40  && this.Player.CanUse("Sinister Strike"))
                 {
                     this.Player.Cast("Sinister Strike");
                 }
