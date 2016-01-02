@@ -105,6 +105,7 @@ namespace something
             }
 
             //wolf time to travel between mobs
+            /*
             if (!this.Player.IsResting() && this.Attackers.Count == 0 && this.Player.GetSpellRank("Ghost Wolf") != 0)
             {
                 if (!hasBuff(this.Player, "Ghost Wolf"))
@@ -113,6 +114,7 @@ namespace something
                     return false;
                 }
             }
+            */
             return true;
         }
 

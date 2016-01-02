@@ -25,37 +25,49 @@ namespace something
 
         public override void PreFight()
         {
-            if (this.Player.GetSpellRank("Charge") != 0 && this.Target.DistanceToPlayer > 10)
+            if (this.Player.GetSpellRank("Charge") != 0)
             {
-                if (this.Player.CanUse("Charge") && this.Player.GotBuff("Battle Stance"))
+                if (this.Player.CanUse("Charge"))
                 {
                     this.Player.Cast("Charge");
                     return;
                 }
             }
-            else if (this.Player.GetSpellRank("Intercept") != 0)
+            if (this.Player.GetSpellRank("Intercept") != 0)
             {
-                if (this.Player.CanUse("Intercept") && this.Player.GotBuff("Berserker Stance"))
+                if (this.Player.CanUse("Intercept"))
                 {
-                    if (this.Player.Rage >= 10)
-                    {
-                        this.Player.Cast("Intercept");
-                        return;
-                    }
+                    this.Player.Cast("Intercept");
+                    return;
                 }
             }
-            else
-            {
-                this.SetCombatDistance(3);
-                this.Player.Attack();
-            }
-            
+            this.SetCombatDistance(3);
+            this.Player.Attack();
+            return;
         }
 
         public override void Fight()
         {
-            this.Player.Attack();
+            //keep battle shout up
+            if (this.Player.GetSpellRank("Battle Shout") != 0 && !this.Player.GotBuff("Battle Shout"))
+            {
+                if (this.Player.CanUse("Battle Shout"))
+                {
+                    this.Player.Cast("Battle Shout");
+                    return;
+                }
+            }
             
+            //keep rend up if target over 50%
+            if (this.Player.GetSpellRank("Rend") != 0 && !this.Target.GotDebuff("Rend") && this.Target.HealthPercent > 50)
+            {
+                if (this.Player.CanUse("Rend"))
+                {
+                    this.Player.Cast("Rend");
+                    return;
+                }
+            }
+
             //top of the list, always execute
             if (this.Player.GetSpellRank("Execute") != 0)
             {
@@ -107,7 +119,7 @@ namespace something
                     }
                 }
                 //cleave them down if there is lots of rage
-                if (this.Player.GetSpellRank("Cleave") != 0 && this.Player.Rage > 60)
+                if (this.Player.GetSpellRank("Cleave") != 0)
                 {
                     if (this.Player.CanUse("Cleave"))
                     {
@@ -118,6 +130,7 @@ namespace something
             }
 
             //interrupt casting
+            /**
             if(this.Player.GetSpellRank("Pummel") != 0 && this.Target.IsCasting != "" || this.Target.IsChanneling != "")
             {
                 if (this.Player.CanUse("Pummel"))
@@ -125,46 +138,17 @@ namespace something
                     this.Player.Cast("Pummel");
                 }
             }
-
-            //keep rend up if target over 50%
-            if (this.Player.GetSpellRank("Rend") != 0 && !this.Target.GotDebuff("Rend") && this.Target.HealthPercent > 50)
+            **/
+            /*
+            if (this.Player.GetSpellRank("Berserker Rage") != 0)
             {
-                if (this.Player.CanUse("Rend"))
+                if (this.Player.CanUse("Berserker Rage"))
                 {
-                    this.Player.Cast("Rend");
-                    return;
+                    this.Player.Cast("Berserker Rage");
                 }
             }
+            */
 
-            //keep battle shout up
-            if (this.Player.GetSpellRank("Battle Shout") != 0 && !this.Player.GotBuff("Battle Shout"))
-            {
-                if (this.Player.CanUse("Battle Shout"))
-                {
-                    this.Player.Cast("Battle Shout");
-                    return;
-                }
-            }
-
-            //not sure if this works, cant find the spells for vanilla warrior
-            if (this.Player.Rage <= 40)
-            {
-                if (this.Player.GetSpellRank("Blood Rage") != 0)
-                {
-                    if (this.Player.CanUse("Blood Rage"))
-                    {
-                        this.Player.Cast("Blood Rage");
-                        return;
-                    }
-                }
-                if (this.Player.GetSpellRank("Berserker Rage") != 0 && this.Player.GotBuff("Berserker Stance"))
-                {
-                    if (this.Player.CanUse("Berserker Rage"))
-                    {
-                        this.Player.Cast("Berserker Rage");
-                    }
-                }
-            }
 
             //bloodthirst for grind-a-lot
             if (this.Player.GetSpellRank("Bloodthirst") != 0)
@@ -186,7 +170,16 @@ namespace something
                 }
             }
 
-            //heroic strike is low level horse shit spell
+            if (this.Player.GetSpellRank("Cleave") != 0 && this.Player.Rage >= 80)
+            {
+                if (this.Player.CanUse("Cleave"))
+                {
+                    this.Player.Cast("Cleave");
+                    return;
+                }
+            }
+
+            //heroic strike is low level horse shit spell so set the rage a little higher
             if (this.Player.GetSpellRank("Heroic Strike") != 0)
             {
                 if (this.Player.CanUse("Heroic Strike"))
@@ -195,6 +188,16 @@ namespace something
                     return;
                 }
             }
+            //fuck it not doing anything else!
+            if (this.Player.GetSpellRank("Blood Rage") != 0)
+            {
+                if (this.Player.CanUse("Blood Rage"))
+                {
+                    this.Player.Cast("Blood Rage");
+                    return;
+                }
+            }
+            this.Player.Attack();
         }
 
         public override bool Buff()

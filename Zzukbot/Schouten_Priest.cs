@@ -134,7 +134,7 @@ namespace something
                 }
             }
 
-            if (canWand)
+            if (this.Player.IsWandEquipped())
             {
                 this.Player.StartWand();
             }
@@ -169,18 +169,7 @@ namespace something
             }
             if (this.Player.ManaPercent < 60)
             {
-                if (this.Player.CanUse(drinkName))
-                {
-                    this.Player.Drink(drinkName);
-                }
-                else
-                {
-                    this.Player.Cast("Sit");
-                    while(this.Player.ManaPercent < 70)
-                    {
-                        System.Threading.Thread.Sleep(1000);
-                    }
-                }
+                this.Player.Drink();
             }
         }
 
