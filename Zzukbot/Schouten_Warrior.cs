@@ -48,6 +48,47 @@ namespace something
 
         public override void Fight()
         {
+            //handle multi-mob
+            if (this.Attackers.Count >= 2)
+            {
+                //keep the clap up
+                if (this.Player.GetSpellRank("Thunder Clap") != 0 && !this.Target.GotDebuff("Thunder Clap"))
+                {
+                    if (this.Player.CanUse("Thunder Clap"))
+                    {
+                        this.Player.Cast("Thunder Clap");
+                        return;
+                    }
+                }
+                //Get the damage down with Demoralizing Shout
+                if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && !this.Target.GotDebuff("Demoralizing Shout")) ;
+                {
+                    if (this.Player.CanUse("Demoralizing Shout"))
+                    {
+                        this.Player.Cast("Demoralizing Shout");
+                        return;
+                    }
+                }
+                //how about a little retaliation?
+                if (this.Player.GetSpellRank("Retaliation") != 0)
+                {
+                    if (this.Player.CanUse("Retaliation"))
+                    {
+                        this.Player.Cast("Retaliation");
+                        return;
+                    }
+                }
+                //cleave them down if there is lots of rage
+                if (this.Player.GetSpellRank("Cleave") != 0)
+                {
+                    if (this.Player.CanUse("Cleave"))
+                    {
+                        this.Player.Cast("Cleave");
+                        return;
+                    }
+                }
+            }
+
             //keep battle shout up
             if (this.Player.GetSpellRank("Battle Shout") != 0 && !this.Player.GotBuff("Battle Shout"))
             {
@@ -87,48 +128,6 @@ namespace something
                     return;
                 }
             }
-
-            //handle multi-mob
-            if(this.Attackers.Count >= 2)
-            {
-                //keep the clap up
-                if(this.Player.GetSpellRank("Thunder Clap") != 0 && !this.Target.GotDebuff("Thunder Clap"))
-                {
-                    if(this.Player.CanUse("Thunder Clap"))
-                    {
-                        this.Player.Cast("Thunder Clap");
-                        return;
-                    }
-                }
-                //Get the damage down with Demoralizing Shout
-                if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && !this.Target.GotDebuff("Demoralizing Shout"));
-                {
-                    if (this.Player.CanUse("Demoralizing Shout"))
-                    {
-                        this.Player.Cast("Demoralizing Shout");
-                        return;
-                    }
-                }
-                //how about a little retaliation?
-                if (this.Player.GetSpellRank("Retaliation") != 0)
-                {
-                    if (this.Player.CanUse("Retaliation"))
-                    {
-                        this.Player.Cast("Retaliation");
-                        return;
-                    }
-                }
-                //cleave them down if there is lots of rage
-                if (this.Player.GetSpellRank("Cleave") != 0)
-                {
-                    if (this.Player.CanUse("Cleave"))
-                    {
-                        this.Player.Cast("Cleave");
-                        return;
-                    }
-                }
-            }
-
             //interrupt casting
             /**
             if(this.Player.GetSpellRank("Pummel") != 0 && this.Target.IsCasting != "" || this.Target.IsChanneling != "")
