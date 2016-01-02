@@ -313,8 +313,6 @@ namespace something
                     return false;
                 }
             }
-
-            D
             //scroll buffs
             if (scrollBuff())
             {
