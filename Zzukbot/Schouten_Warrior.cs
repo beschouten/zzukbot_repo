@@ -92,7 +92,7 @@ namespace something
             if(this.Attackers.Count >= 2)
             {
                 //keep the clap up
-                if(this.Player.GetSpellRank("Thunder Clap") != 0 && !this.Target.GotDebuff("Weakened Blows"))
+                if(this.Player.GetSpellRank("Thunder Clap") != 0 && !this.Target.GotDebuff("Thunder Clap"))
                 {
                     if(this.Player.CanUse("Thunder Clap"))
                     {
@@ -101,7 +101,7 @@ namespace something
                     }
                 }
                 //Get the damage down with Demoralizing Shout
-                if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && this.Target.GotDebuff("Demoralizing Shout"));
+                if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && !this.Target.GotDebuff("Demoralizing Shout"));
                 {
                     if (this.Player.CanUse("Demoralizing Shout"))
                     {
@@ -198,6 +198,7 @@ namespace something
                 }
             }
             this.Player.Attack();
+            return;
         }
 
         public override bool Buff()

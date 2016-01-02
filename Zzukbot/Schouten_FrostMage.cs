@@ -56,12 +56,14 @@ namespace something
                 this.Player.Cast("Frostbolt");
                 return;
             }
-            //follow up with arcane missles mid range
+            //follow up with arcane missles mid range (doesnt channel right)
+            /**
             if (this.Target.DistanceToPlayer >= 10 && this.Player.CanUse("Arcane Missiles"))
             {
                 this.Player.CastWait("Arcane Missiles", 2250);
                 return;
             }
+            */
             //then cast another frostbolt close range
             if (this.Player.CanUse("Frostbolt"))
             {
