@@ -41,13 +41,14 @@ namespace something
                     return;
                 }
             }
-            this.SetCombatDistance(3);
             this.Player.Attack();
+            this.SetCombatDistance(3);
             return;
         }
 
         public override void Fight()
         {
+            this.Player.Attack();
             //handle multi-mob
             if (this.Attackers.Count >= 2)
             {
