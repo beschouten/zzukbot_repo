@@ -236,6 +236,7 @@ namespace something
         public override void Rest()
         {
             //evocation is quicker
+            /*
             if (this.Player.GetSpellRank("Evocation") != 0)
             {
                 if (this.Player.CanUse("Evocation") && Player.ManaPercent <= 20)
@@ -243,6 +244,7 @@ namespace something
                     this.Player.CastWait("Evocation", 1000);
                 }
             }
+            */
             //otherwise drink
             else if(this.Player.ManaPercent <= 90)
             {

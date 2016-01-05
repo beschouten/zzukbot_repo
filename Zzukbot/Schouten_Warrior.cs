@@ -62,7 +62,7 @@ namespace something
                     }
                 }
                 //Get the damage down with Demoralizing Shout
-                if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && !this.Target.GotDebuff("Demoralizing Shout")) ;
+                if (this.Player.GetSpellRank("Demoralizing Shout") != 0 && !this.Target.GotDebuff("Demoralizing Shout"))
                 {
                     if (this.Player.CanUse("Demoralizing Shout"))
                     {

@@ -55,6 +55,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Profiles\Camp T Circle 20.xml" />
+    <Content Include="Profiles\Durnholde 26.xml" />
     <Content Include="ZzukBot.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
