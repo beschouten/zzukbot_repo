@@ -46,6 +46,13 @@ namespace something
             return;
         }
 
+        public override void Rest()
+        {
+            if (this.Player.HealthPercent < 60)
+                this.Player.Eat();
+            Player.DoString("DoEmote('Sit')");
+        }
+
         public override void Fight()
         {
             this.Player.Attack();

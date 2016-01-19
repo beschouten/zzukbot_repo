@@ -44,11 +44,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Schouten_Druid.cs" />
     <Compile Include="Schouten_FrostMage.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Schouten_Priest.cs" />
+    <Compile Include="Schouten_Healing_Priest.cs" />
     <Compile Include="Schouten_Rogue.cs" />
     <Compile Include="Schouten_Shaman.cs" />
     <Compile Include="Schouten_Warrior.cs" />

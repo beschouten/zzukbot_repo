@@ -279,6 +279,7 @@ namespace something
             {
                 this.Player.TryCast("Shadowmeld");
             }
+            Player.DoString("DoEmote('Sit')");
         }
 
         public override bool Buff()

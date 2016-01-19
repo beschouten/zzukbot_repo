@@ -147,6 +147,7 @@ namespace something
             {
                 this.Player.Drink();
             }
+            Player.DoString("DoEmote('Sit')");
         }
 
         public override void Fight()

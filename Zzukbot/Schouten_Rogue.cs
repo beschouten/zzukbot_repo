@@ -214,6 +214,7 @@ namespace something
                     }
                 }
                 //fuckin Riposte these assholes if you can
+                /**
                 if (this.Player.GetSpellRank("Riposte") != 0)
                 {
                     if (this.Player.CanUse("Riposte"))
@@ -222,6 +223,7 @@ namespace something
                         return;
                     }
                 }
+                **/
                 //If nothing else, cast SS
                 if (Energy >= 40  && this.Player.CanUse("Sinister Strike"))
                 {
@@ -231,6 +233,13 @@ namespace something
             }
 
         }
+        public override void Rest()
+        {
+            if(this.Player.HealthPercent < 60)
+                this.Player.Eat();
+            Player.DoString("DoEmote('Sit')");
+        }
+
 
         public override bool Buff()
         {
