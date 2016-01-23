@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Start: Arathi Highlands 0/0 -->
+<Profile>
+	<Hotspots>
+		<Hotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1215.919</X>
+			<Y>-3542.407</Y>
+			<Z>47.1705</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1272.994</X>
+			<Y>-3465.429</Y>
+			<Z>40.28644</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1327.675</X>
+			<Y>-3389.179</Y>
+			<Z>43.97025</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1421.316</X>
+			<Y>-3397.62</Y>
+			<Z>50.20736</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1529.924</X>
+			<Y>-3326.979</Y>
+			<Z>35.48123</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1568.955</X>
+			<Y>-3352.401</Y>
+			<Z>31.12771</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1625.148</X>
+			<Y>-3395.296</Y>
+			<Z>33.82185</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+	</Hotspots>
+	<VendorHotspots>
+		<VendorHotspot>
+			<!-- Pos: 0/0 -->
+			<X>-934.3448</X>
+			<Y>-3478.052</Y>
+			<Z>51.30853</Z>
+			<Type>Hotspot</Type>
+		</VendorHotspot>
+		<VendorHotspot>
+			<!-- Pos: 0/0 -->
+			<X>-988.448</X>
+			<Y>-3515.522</Y>
+			<Z>57.14382</Z>
+			<Type>Waypoint</Type>
+		</VendorHotspot>
+		<VendorHotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1044.059</X>
+			<Y>-3551.979</Y>
+			<Z>54.93048</Z>
+			<Type>Waypoint</Type>
+		</VendorHotspot>
+		<VendorHotspot>
+			<!-- Pos: 0/0 -->
+			<X>-1117.468</X>
+			<Y>-3547.035</Y>
+			<Z>49.97572</Z>
+			<Type>Waypoint</Type>
+		</VendorHotspot>
+	</VendorHotspots>
+	<Repair>
+		<!-- Pos: 0/0 -->
+		<Position>
+			<X>-933.85</X>
+			<Y>-3477.47</Y>
+			<Z>51.30411</Z>
+		</Position>
+		<Name>Mu'uta</Name>
+	</Repair>
+</Profile>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Start: The Barrens 43/60 -->
+<Profile>
+	<Hotspots>
+		<Hotspot>
+			<!-- Pos: 43/60 -->
+			<X>-2505.36</X>
+			<Y>-1805.044</Y>
+			<Z>92.13935</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 44/62 -->
+			<X>-2586.257</X>
+			<Y>-1852.823</Y>
+			<Z>91.69572</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 44/63 -->
+			<X>-2683.965</X>
+			<Y>-1885.937</Y>
+			<Z>93.86679</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 45/64 -->
+			<X>-2727.287</X>
+			<Y>-1944.545</Y>
+			<Z>94.58725</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 45/65 -->
+			<X>-2837.669</X>
+			<Y>-1988.598</Y>
+			<Z>95.8093</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 46/67 -->
+			<X>-2963.934</X>
+			<Y>-2094.995</Y>
+			<Z>91.66755</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 46/68 -->
+			<X>-3048.154</X>
+			<Y>-2132.56</Y>
+			<Z>91.9894</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 47/70 -->
+			<X>-3161.64</X>
+			<Y>-2141.318</Y>
+			<Z>91.67348</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 47/72 -->
+			<X>-3302.595</X>
+			<Y>-2164.534</Y>
+			<Z>93.80969</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+	</Hotspots>
+</Profile>

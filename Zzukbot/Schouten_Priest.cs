@@ -82,16 +82,8 @@ namespace something
             //healing is priority
             if (this.Player.HealthPercent <= 40)
             {
-                this.Player.StopWand();
-                if (this.Player.GetSpellRank("Flash Heal") != 0)
-                {
-                    this.Player.Cast("Flash Heal");
-                }
-                else
-                {
-                    this.Player.Cast("Lesser Heal");
-                }
-                return;
+                //Requires Quickheal addon
+                this.Player.DoString("QuickHeal()");
             }
 
             //make sure to kill the low health one
@@ -152,25 +144,16 @@ namespace something
                 if(this.Player.CanUse("Purify") && this.Player.GetSpellRank("Purify") != 0)
                     this.Player.Cast("Purify");
             }
-            if (this.Player.HealthPercent <= 80 && this.Player.GetSpellRank("Flash of Light") != 0)
+            if (this.Player.HealthPercent <= 50)
             {
-                this.Player.Cast("Flash  Heal");
-            }
-            else if (this.Player.HealthPercent <= 50)
-            {
-                if (this.Player.GetSpellRank("Heal") != 0)
-                {
-                    this.Player.Cast("Heal");
-                }
-                else
-                {
-                    this.Player.Cast("Lesser Heal");
-                }
+                //Requires Quickheal addon
+                this.Player.DoString("QuickHeal()");
             }
             if (this.Player.ManaPercent < 60)
             {
                 this.Player.Drink();
             }
+            Player.DoString("DoEmote('Sit')");
         }
 
         public override bool Buff()

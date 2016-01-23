@@ -118,7 +118,7 @@ namespace something
             }
 
             //top of the list, always execute
-            if (this.Player.GetSpellRank("Execute") != 0)
+            if (this.Player.GetSpellRank("Execute") != 0 && this.Target.HealthPercent <= 20)
             {
                 if (this.Player.CanUse("Execute"))
                 {
@@ -154,15 +154,24 @@ namespace something
                     this.Player.Cast("Berserker Rage");
                 }
             }
-            */
-
-
+            
             //bloodthirst for grind-a-lot
             if (this.Player.GetSpellRank("Bloodthirst") != 0)
             {
                 if (this.Player.CanUse("Bloodthirst"))
                 {
                     this.Player.Cast("Bloodthirst");
+                    return;
+                }
+            }
+            */
+
+            //slam is the jam
+            if (this.Player.GetSpellRank("Slam") != 0)
+            {
+                if (this.Player.CanUse("Slam"))
+                {
+                    this.Player.Cast("Slam");
                     return;
                 }
             }

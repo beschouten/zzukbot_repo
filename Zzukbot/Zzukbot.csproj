@@ -44,20 +44,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Schouten_Druid.cs" />
     <Compile Include="Schouten_FrostMage.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Schouten_Healing_Priest.cs" />
+    <Compile Include="Schouten_Priest.cs" />
     <Compile Include="Schouten_Rogue.cs" />
     <Compile Include="Schouten_Shaman.cs" />
     <Compile Include="Schouten_Warrior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Profiles\20 - West Camp T.xml" />
+    <Content Include="Profiles\Arathi-31.xml" />
     <Content Include="Profiles\Camp T Circle 20.xml" />
     <Content Include="Profiles\Durnholde 26.xml" />
+    <Content Include="Profiles\Hammerfall Ogre.xml" />
+    <Content Include="Profiles\Hammerfall South.xml" />
+    <Content Include="Profiles\Hammerfall West.xml" />
+    <Content Include="Profiles\Neander 27.xml" />
+    <Content Include="Profiles\South Camp T.xml" />
     <Content Include="ZzukBot.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

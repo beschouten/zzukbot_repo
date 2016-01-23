@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Start: Arathi Highlands 30/49 -->
+<Profile>
+	<Hotspots>
+		<Hotspot>
+			<!-- Pos: 30/49 -->
+			<X>-1330.108</X>
+			<Y>-1963.947</Y>
+			<Z>54.95847</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 30/45 -->
+			<X>-1233.99</X>
+			<Y>-1978.616</Y>
+			<Z>67.00678</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 30/39 -->
+			<X>-1087.478</X>
+			<Y>-1980.519</Y>
+			<Z>70.51291</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 33/38 -->
+			<X>-1053.553</X>
+			<Y>-2080.092</Y>
+			<Z>53.9063</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 36/39 -->
+			<X>-1091.747</X>
+			<Y>-2171.788</Y>
+			<Z>61.05777</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 37/43 -->
+			<X>-1170.491</X>
+			<Y>-2230.102</Y>
+			<Z>51.59177</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 37/43 -->
+			<X>-1170.491</X>
+			<Y>-2230.102</Y>
+			<Z>51.59177</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 36/44 -->
+			<X>-1201.518</X>
+			<Y>-2169.541</Y>
+			<Z>57.81806</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 34/44 -->
+			<X>-1190.905</X>
+			<Y>-2119.246</Y>
+			<Z>57.98711</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+		<Hotspot>
+			<!-- Pos: 33/45 -->
+			<X>-1219.303</X>
+			<Y>-2080.309</Y>
+			<Z>50.40039</Z>
+			<Type>Hotspot</Type>
+		</Hotspot>
+	</Hotspots>
+</Profile>

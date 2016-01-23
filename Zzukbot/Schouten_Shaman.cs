@@ -128,7 +128,8 @@ namespace something
             //heal if needed
             if (this.Player.HealthPercent <= 75 && this.Player.CanUse("Healing Wave") && !this.Player.GotBuff("Drink"))
             {
-                this.Player.CastWait("Healing Wave", 500);
+                //Requires Quickheal addon
+                this.Player.DoString("QuickHeal()");
             }
             //mana totem!
             if (this.Player.ManaPercent <= 35)
@@ -162,15 +163,8 @@ namespace something
             //healing is priority
             if (this.Player.HealthPercent <= 40)
             {
-                if (this.Player.GetSpellRank("Healing Wave") != 0)
-                {
-                    if (this.Player.CanUse("Healing Wave"))
-                    {
-                        this.Player.CastWait("Healing Wave", 250);
-                        return;
-                    }
-                }
-
+                //Requires Quickheal addon
+                this.Player.DoString("QuickHeal()");
             }
 
             //make sure to kill the low health one

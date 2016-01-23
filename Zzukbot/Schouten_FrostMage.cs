@@ -133,15 +133,6 @@ namespace something
                         }
                     }
                 }
-                //cast blizzard
-                if (this.Player.ManaPercent >= 20 && this.Player.GetSpellRank("Blizzard") != 0)
-                {
-                    if (this.Player.CanUse("Blizzard"))
-                    {
-                        this.Player.CastAoe("Blizzard", this.Target);
-                        return;
-                    }
-                }
             }
             //OOM wand that bitch
             if (this.Player.ManaPercent < 10)
